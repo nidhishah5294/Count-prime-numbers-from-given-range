@@ -1,0 +1,13 @@
+<div>
+    <p>Enter any number:<input type="number" [(ngModel)]="rangeNumber" (ngModelChange)="rangeNumberChanged($event)">
+    </p>
+    <button [disabled]="isCounting" (click)='countPrimeNumber()'>{{countLabel}}</button>
+    <p *ngIf='isCounting'>{{countingLabel}}</p>
+</div>
+<div *ngIf='totalCount > 0 '>
+    <ul>
+        <li>Checking Primes from 1 to {{rangeNumber}}</li>
+        <li>Prime Count : {{totalCount}}</li>
+        <li> Run Time : {{totalTime}}</li>
+    </ul>
+</div>
