@@ -1,0 +1,53 @@
+.body  
+{  
+    margin: 0;  
+    padding: 0;  
+    font-family: 'Arial';  
+}  
+
+h2{  
+    text-align: center;  
+    color: #277582;  
+    padding: 20px;  
+}  
+
+
+
+.block{  
+    width: 382px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 80px;  
+    background: #D3D3D3;  
+    border-radius: 15px ;      
+}  
+label{  
+    color: #1E90FF	;  
+    font-size: 17px;  
+}  
+
+.textBox{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+.ulBlock{  
+    height: 30px;
+    padding-left: 18px;  
+} 
+
+button{  
+    width: 200px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 5px;  
+    padding-left: 8px;  
+    color: #1E90FF;   
+}  
+
+li{
+    font: bold;
+}
