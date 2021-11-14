@@ -20,7 +20,6 @@ export class CountnumberService {
         /* checking current number is prime or not */
         if (this.isPrime(i)) {
           totalCount++;
-          console.log(totalCount);
         }
       }
       /* Taking end time for time difference */
@@ -35,8 +34,19 @@ export class CountnumberService {
   }
   /* Function for counting prime numbers */
   isPrime(currentNumber: number): boolean {
-    for (let i = 2; i < currentNumber; i++)
-      if (currentNumber % i === 0) return false;
+    /* Starting from 2 */
+    let i = 2;
+    /* Looping from 2 to sqrt(currentNumber) */
+    while (i * i <= currentNumber) {
+      /* Check if currentNumber is devided by looping value*/
+      if (currentNumber % i == 0) {
+        /* CurrentNumber has a factor in between 2 and sqrt(currentNumber) */
+        /* So it is not a prime number */
+        return false;
+      }
+      i++;
+    }
+   /* Number is prime */
     return true;
   }
 

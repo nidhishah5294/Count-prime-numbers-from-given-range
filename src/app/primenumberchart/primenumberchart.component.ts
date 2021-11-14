@@ -1,4 +1,4 @@
-import { DecimalPipe } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { CountnumberService } from './countnumber.service';
 
@@ -11,6 +11,7 @@ import { CountnumberService } from './countnumber.service';
 /*  Count Prime number from 1 to N **/
 
 export class PrimenumberchartComponent implements OnInit {
+  /** Declaring and initializing variable */
   rangeNumber: number = 1;
   totalCount: number = 0;
   totalTime: string = '';
@@ -24,7 +25,7 @@ export class PrimenumberchartComponent implements OnInit {
   checkPrimeNumberLable: string = 'Checking Primes from 1 to ';
   primeCountLable: string = 'Prime Count';
   runTimeLable: string = 'Run Time';
-  // countDigits: number = 0;
+
   /* Inject services */
   constructor(private countnumberService: CountnumberService) { }
 
@@ -32,7 +33,7 @@ export class PrimenumberchartComponent implements OnInit {
   }
 
   /* Count Prime Numbers from 1 To N */
-  countPrimeNumber(): void {
+  countPrimeNumber() {
     /* Checking if number is 1 or 0 */
     if (this.rangeNumber == 1 || this.rangeNumber == 0) {
       this.isOne = true;
@@ -41,11 +42,14 @@ export class PrimenumberchartComponent implements OnInit {
     else {
       /* Enables falgs */
       let oldLabel = this.countLabel;
-      this.isCounting = true;
-      this.countLabel = this.countingLabel;
-      /* Call service for count prime numbers */
-      this.countnumberService.countPrimeNumber(this.rangeNumber)
-        .subscribe({
+        this.isCounting = true;
+        this.countLabel = this.countingLabel;
+
+      /* Add delay of 1 millisecond for reflacting processing label */
+      setTimeout((res: any) => {
+        /* Call service for count prime numbers */
+        let subscribeFunction = this.countnumberService.countPrimeNumber(this.rangeNumber);
+        subscribeFunction.subscribe({
           next: (response: any) => {
             /* Setting response to component variables */
             this.totalCount = response.totalCount;
@@ -53,7 +57,6 @@ export class PrimenumberchartComponent implements OnInit {
             this.isCounting = false;
             this.isOne = false;
             this.countLabel = oldLabel;
-            // this.countDigits = 0;
           },
           /* Checking errors */
           error: (error: any) => {
@@ -61,6 +64,7 @@ export class PrimenumberchartComponent implements OnInit {
             console.log(error);
           }
         });
+      }, 1);
     }
   }
   /*  On model change cheacking if number is changed or not */
@@ -70,12 +74,7 @@ export class PrimenumberchartComponent implements OnInit {
   /* Checking Number are >= 1*/
   isNumberKey(event: any) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    // if (charCode == 48 && this.countDigits == 0)
-    //   return false;
-    // else {
-    //   this.countDigits++;
     return !(charCode > 31 && (charCode < 48 || charCode > 57));
-    // }
   }
 
 }
