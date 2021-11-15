@@ -12,7 +12,7 @@ import { CountnumberService } from './countnumber.service';
 
 export class PrimenumberchartComponent implements OnInit {
   /** Declaring and initializing variable */
-  rangeNumber: number = 1;
+  rangeNumber: any;
   totalCount: number = 0;
   totalTime: string = '';
   isCounting: boolean = false;
@@ -21,7 +21,7 @@ export class PrimenumberchartComponent implements OnInit {
   countingLabel = 'Processing...';
   projectLable: string = 'Prime Numbers Count';
   rangleLable: string = 'Enter  Number';
-  oneLabel: string = 'Enter number greaterthan 1.';
+  oneLabel: string = 'Enter number greater than 1.';
   checkPrimeNumberLable: string = 'Checking Primes from 1 to ';
   primeCountLable: string = 'Prime Count';
   runTimeLable: string = 'Run Time';
